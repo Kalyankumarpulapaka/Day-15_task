@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .t1 {
+            border: 2px solid black;
+            border-radius: 5%;
+            background-color: darkgray;
+            padding: 1%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        .t2 {
+            border: 4px solid rgb(8, 8, 8);
+            border-collapse: collapse;
+        }
+        .inn {
+            border: 2px solid darkgray;
+        }
+        #sub, td {
+            padding: 5px;
+            border-radius: 15%;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+<form id="addressForm">
+    <table class="t1">
+        <tr><th><strong>Form :</strong></th></tr>
+        <tr>
+            <td><label for="fn">First name</label></td>
+            <td><input type="text" id="fn" /></td>
+        </tr>
+        <tr>
+            <td><label for="ln">Last name</label></td>
+            <td><input type="text" id="ln" /></td>
+        </tr>
+        <tr>
+            <td><label for="add">Address</label></td>
+            <td><input type="text" id="add" /></td>
+        </tr>
+        <tr>
+            <td><label for="pin">Pincode</label></td>
+            <td><input type="text" id="pin" /></td>
+        </tr>
+        <tr>
+            <td><label for="gen">Gender</label></td>
+            <td>
+                <select id="gen">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="food">Choice of food</label></td>
+            <td>
+                <select id="food" size="4" multiple>
+                    <option>pasta</option>
+                    <option>pizza</option>
+                    <option>parota</option>
+                    <option>Roti</option>
+                    <option>vadapav</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="state">State</label></td>
+            <td><input type="text" id="state" /></td>
+        </tr>
+        <tr>
+            <td><label for="coun">Country</label></td>
+            <td><input type="text" id="coun" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="button" id="sub" onclick="valid()">Submit</button></td>
+        </tr>
+    </table>
+</form>
+<br>
+<hr>
+<hr>
+<table class="t2" id="newone">
+    <tr>
+        <td class="inn">First name</td>
+        <td class="inn">Last name</td>
+        <td class="inn">Address</td>
+        <td class="inn">Pincode</td>
+        <td class="inn">Gender</td>
+        <td class="inn">Choice of food</td>
+        <td class="inn">State</td>
+        <td class="inn">Country</td>
+    </tr>
+</table>
+
+<script>
+    function valid() {
+        let firstname = document.getElementById('fn').value;
+        let lastname = document.getElementById('ln').value;
+        let address = document.getElementById('add').value;
+        let pincode = document.getElementById('pin').value;
+        let gender = document.getElementById('gen').value;
+        let food = '';
+        let foodOptions = document.getElementById('food').options;
+        for (let i = 0; i < foodOptions.length; i++) {
+            if (foodOptions[i].selected) {
+                food += foodOptions[i].value + ', ';
+            }
+        }
+        // Remove the trailing comma and space
+        food = food.slice(0, -2);
+        let state = document.getElementById('state').value;
+        let country = document.getElementById('coun').value;
+
+        var table = document.getElementById('newone');
+        var data = [firstname, lastname, address, pincode, gender, food, state, country];
+        var newRow = table.insertRow();
+        for (var i = 0; i < data.length; i++) {
+            var cell = newRow.insertCell(i);
+            cell.innerText = data[i];
+        }
+         
+  // Clear form fields
+  document.getElementById("addressForm").reset();
+}
+
+</script>
+
+</body>
+</html>

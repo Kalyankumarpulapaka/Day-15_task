@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        border: 3px solid black;
+        height: 300px;
+        width: 300px;
+        margin: auto;
+      }
+      .cal {
+        padding: 7%;
+        height: 49px;
+        width: 72px;
+        text-align: center;
+        background-color: darkgray;
+        
+      }
+      
+    </style>
+  </head>
+  <body>
+     <h1 id="title">Calculator</h1>
+    <p id="description">This is a simple calculator application.</p>
+    <div class="box">
+      <div>
+        <input
+          type="text"
+          style="height: 50px; width: 292px; border: 2px solid black"
+          id="input"  onkeydown="stopalfa(event)"
+        />
+      </div>
+      <!-- <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script> -->
+      <div onclick="fun()">
+        <button type="button" class="cal" onclick="fun(event) " >&#37;</button>
+        <button type="button" class="cal" onclick="fun(event) ">C</button>
+        <button type="button" class="cal" onclick="fun(event) ">&lt=</button>
+        <button type="button" class="cal" onclick="fun(event) ">/</button>
+        <button type="button" class="cal" onclick="fun(event) ">7</button>
+        <button type="button" class="cal" onclick="fun(event) ">8</button>
+        <button type="button" class="cal" onclick="fun(event) ">9</button>
+        <button type="button" class="cal" onclick="fun(event) ">*</button>
+        <button type="button" class="cal" onclick="fun(event) ">4</button>
+        <button type="button" class="cal" onclick="fun(event) ">5</button>
+        <button type="button" class="cal" onclick="fun(event) ">6</button>
+        <button type="button" class="cal" onclick="fun(event) ">-</button>
+        <button type="button" class="cal" onclick="fun(event) ">1</button>
+        <button type="button" class="cal" onclick="fun(event) ">2</button>
+        <button type="button" class="cal" onclick="fun(event) ">3</button>
+        <button type="button" class="cal" onclick="fun(event) ">+</button>
+        <button type="button" class="cal" onclick="fun(event) ">00</button>
+        <button type="button" class="cal" onclick="fun(event) ">0</button>
+        <button type="button" class="cal" onclick="fun(event) ">.</button>
+        <button type="button" class="cal" onclick="fun(event) ">=</button>
+      </div> 
+    
+    </div>      
+     <script>
+  
+    function fun(event){
+    var k=event.target;
+   
+
+    if(k.textContent==='C'){
+        document.getElementById('input').value= "" 
+    }
+    else if(k.textContent==='<='){
+        let s=document.getElementById('input').value.slice(0,-1);
+        console.log(s)
+        document.getElementById('input').value=s;
+    }
+    else if(k.textContent==="="){
+      var p=eval(document.getElementById('input').value)
+      document.getElementById('input').value=p;
+    }
+
+    else{
+        document.getElementById('input').value += k.textContent;}
+       
+    }
+
+    function stopalfa(event){
+        var x=event.keyCode
+        if(x<48||x>57){
+          event.preventDefault();
+         alert('Only numbers are allowed.')
+        }
+      }
+
+    </script>
+     </body>
+     </html>
